@@ -14,11 +14,6 @@ namespace MyLectureApplication
                 routeTemplate: "api/v1/lectures/{LectureID}/{controller}/{commentID}",
                 defaults: new { id = RouteParameter.Optional,controller="CommentsController" }
             );
-            config.Routes.MapHttpRoute(
-               name: "DefaultApi",
-               routeTemplate: "api/v1/{controller}/{id}",
-               defaults: new { id = RouteParameter.Optional}
-           );
         }
     }
 }

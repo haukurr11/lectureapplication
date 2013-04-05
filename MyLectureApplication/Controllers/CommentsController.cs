@@ -10,7 +10,7 @@ namespace MyLectureApplication.Controllers
     public class CommentsController : ApiController
     {
         // GET api/comments
-        public IEnumerable<string> Get(int id)
+        public IEnumerable<string> Get()
         {
             return new string[] { "value1", "value2" };
         }
