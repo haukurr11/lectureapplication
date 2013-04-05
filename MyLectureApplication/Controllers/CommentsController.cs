@@ -4,21 +4,20 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using MyLectureApplication.Models;
 
 namespace MyLectureApplication.Controllers
 {
     public class CommentsController : ApiController
     {
+        AppDataContext db = new AppDataContext();
         // GET api/comments
-        public IEnumerable<string> Get()
+        public IEnumerable<Comment> Get(int id)
         {
-            return new string[] { "value1", "value2" };
-        }
-
-        // GET api/comments/5
-        public string Get(int id)
-        {
-            return "value";
+            var result =  from comment in db.Comments
+                          where comment.Lecture.ID == id
+                          select comment;
+            return result;
         }
 
         // POST api/comments
