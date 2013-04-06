@@ -6,7 +6,7 @@ using System.Web.Http;
 using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
-
+using Newtonsoft.Json;
 namespace MyLectureApplication
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -16,6 +16,10 @@ namespace MyLectureApplication
     {
         protected void Application_Start()
         {
+            var jsonSerializerSettings = new JsonSerializerSettings
+            {
+                PreserveReferencesHandling = PreserveReferencesHandling.Objects
+            };
             AreaRegistration.RegisterAllAreas();
 
             WebApiConfig.Register(GlobalConfiguration.Configuration);

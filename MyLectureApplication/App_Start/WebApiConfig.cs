@@ -11,11 +11,17 @@ namespace MyLectureApplication
     {
         public static void Register(HttpConfiguration config)
         {
+            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; 
             // Change to JSON
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
             config.Formatters.Remove(config.Formatters.XmlFormatter);
-            
+            config.Routes.MapHttpRoute(
+           name: "LoggedInUser",
+           routeTemplate: "api/v1/{controller}",
+           defaults: new { controller = "CurrentUser" }
+             );
+           
 
             config.Routes.MapHttpRoute(
                name: "Lecture",
@@ -30,7 +36,7 @@ namespace MyLectureApplication
            
             config.Routes.MapHttpRoute(
                name: "Comments",
-               routeTemplate: "api/v1/{controller}/{id}",
+               routeTemplate: "api/v1/lectures/{id}/{controller}",
                defaults: new { id = RouteParameter.Optional}
            );/*
             config.Routes.MapHttpRoute(

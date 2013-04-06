@@ -1,37 +1,40 @@
 ﻿@model MyLectureApplication.Models.RegisterModel
+
 @{
-    ViewBag.Title = "Register";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<hgroup class="title">
-    <h1>@ViewBag.Title.</h1>
-    <h2>Create a new account.</h2>
-</hgroup>
 
+
+<div class="row">
+  <div class="span4 offset4 well" ng-controller="LoginController">
+   
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()
     @Html.ValidationSummary()
-
+     <style>
+        .checkbox {
+            float:left;
+        }
+        input {
+            width: 95%;
+        }
+        .validation-summary-errors {
+padding:8px 35px 8px 14px;margin-bottom:20px;text-shadow:0 1px 0 rgba(255, 255, 255, 0.5);background-color:#fcf8e3;border:1px solid #fbeed5;-webkit-border-radius:4px;-moz-border-radius:4px;border-radius:4px;
+background-color:#f2dede;border-color:#eed3d7;color:#b94a48;
+}
+    </style>
     <fieldset>
         <legend>Registration Form</legend>
-        <ol>
-            <li>
                 @Html.LabelFor(m => m.UserName)
                 @Html.TextBoxFor(m => m.UserName)
-            </li>
-            <li>
                 @Html.LabelFor(m => m.Password)
                 @Html.PasswordFor(m => m.Password)
-            </li>
-            <li>
                 @Html.LabelFor(m => m.ConfirmPassword)
                 @Html.PasswordFor(m => m.ConfirmPassword)
-            </li>
-        </ol>
-        <input type="submit" value="Register" />
+        <input type="submit" value="Register" class="btn btn-large btn-block btn-primary" />
     </fieldset>
 }
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+      
+  </div>
+</div>

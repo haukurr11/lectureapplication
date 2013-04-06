@@ -4,15 +4,30 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MyLectureApplication.Models;
+using MyLectureApplication.Models;  
 
+using System.Web.Security;
 namespace MyLectureApplication.Controllers
 {
+
+    public class CurrentUserController : ApiController
+    {
+        [Authorize]
+        public UserProfile Get()
+        {
+            AppDataContext db = new AppDataContext();
+            var u = (from user in db.UserProfiles
+                     where user.UserName == User.Identity.Name
+                     select user).SingleOrDefault();
+            return u;
+        }
+    }
     public class LecturesController : ApiController
     {
         AppDataContext db = new AppDataContext();
 
         // GET api/lectures
+        [Authorize]
         public IEnumerable<Lecture> Get()
         {
             var result = from lecture in db.Lectures
@@ -24,6 +39,7 @@ namespace MyLectureApplication.Controllers
         }
 
         // GET api/lectures/5
+        [Authorize]
         public Lecture Get(int id)
         {
             var result = (from lecture in db.Lectures 
@@ -37,16 +53,19 @@ namespace MyLectureApplication.Controllers
         }
 
         // POST api/lectures
+        [Authorize(Roles = "Teachers")]
         public void Post([FromBody]string value)
         {
         }
 
         // PUT api/lectures/5
+        [Authorize(Roles = "Teachers")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/lectures/5
+        [Authorize(Roles = "Teachers")]
         public void Delete(int id)
         {
         }

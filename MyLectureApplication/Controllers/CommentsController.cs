@@ -14,29 +14,33 @@ namespace MyLectureApplication.Controllers
         // GET api/comment
 
         // GET api/comments/5
-        public IEnumerable<string> Get(int id)
+        [Authorize]
+        public IEnumerable<Comment> Get(int id)
         {
             var result = from c in db.Comments
                          where c.Lecture.ID == id 
-                         select c.CommentText;
+                         select c;
                           
             if (result == null)
                         throw new FieldAccessException("Nothing found in db.Comments");
-
             return result;
         }
 
         // POST api/comments
-        public void Post([FromBody]string value)
+        [Authorize]
+        public void Post(int id,[FromBody]string value)
         {
+            Console.WriteLine("hallo");
         }
 
         // PUT api/comments/5
+        [Authorize(Roles = "Teachers")]
         public void Put(int id, [FromBody]string value)
         {
         }
 
         // DELETE api/comments/5
+        [Authorize(Roles="Teachers")]
         public void Delete(int id)
         {
         }

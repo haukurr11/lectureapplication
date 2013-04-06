@@ -1,0 +1,118 @@
+.container {
+    margin-top: 30px;
+    background-color:white;
+    padding: 50px;
+    border-radius:5px;
+}
+.hide_element {
+    display:none;
+}
+body {
+    background-color:#EEEEEE;
+}
+#chat {
+    overflow-y:scroll;
+    height:400px;
+    float:left;
+    width:80%;
+}
+.msgcol {
+    word-break:break-all;
+
+}
+#rightside {
+    float:right;
+    min-height:400px;
+    display:block;
+    width:18%;
+}
+#rightside select{
+    display:block;
+    height:350px;;
+    width:100%;
+}
+#rightside button{
+    display:block;
+    width:100%;
+}
+.input-append {
+    width:100%;
+}
+.span2 {
+    width:90% !important;
+}
+#sendbtn {
+    width:100px;
+}
+.timecol{
+    width:5%;
+}
+.nickcol{
+    font-weight:bold;
+    width:6%;
+}
+.hidebutton {
+    display:none !important;
+}
+select.noncreator {
+    height:400px !important;
+}
+.youtube-player {
+    display: block;
+    margin-left:auto;
+    margin-right:auto;
+}
+h2 {
+    text-align:center;
+}
+
+.form-inline {
+    width:600px;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important
+}
+.input-small {
+  width:200px;
+}
+.sendmsg {
+    height:70px;
+}
+.commentform {
+    
+    margin-top:10px;
+    text-align:center;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important
+}
+.span5 {
+width:550px !important;
+}
+.comment span{
+    background-color:black;
+    color:white;
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding-left:20px;
+}
+.comment span div{
+    float:right;
+    padding-right:40px;
+}
+.comment {
+    width:600px;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important;
+    background-color:#cccccc;
+   text-align:left;
+   overflow:hidden;
+
+}
+
+.comment p{
+    padding-left:10px;
+
+}

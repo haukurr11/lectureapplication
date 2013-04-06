@@ -19,7 +19,6 @@ namespace MyLectureApplication.Controllers
     {
         //
         // GET: /Account/Login
-
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
@@ -46,10 +45,7 @@ namespace MyLectureApplication.Controllers
         }
 
         //
-        // POST: /Account/LogOff
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
+        // GET: /Account/LogOff
         public ActionResult LogOff()
         {
             WebSecurity.Logout();
