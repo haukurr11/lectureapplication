@@ -11,12 +11,18 @@ namespace MyLectureApplication.Controllers
     public class CommentsController : ApiController
     {
         AppDataContext db = new AppDataContext();
-        // GET api/comments
-        public IEnumerable<Comment> Get(int id)
+        // GET api/comment
+
+        // GET api/comments/5
+        public IEnumerable<string> Get(int id)
         {
-            var result =  from comment in db.Comments
-                          where comment.Lecture.ID == id
-                          select comment;
+            var result = from c in db.Comments
+                         where c.Lecture.ID == id 
+                         select c.CommentText;
+                          
+            if (result == null)
+                        throw new FieldAccessException("Nothing found in db.Comments");
+
             return result;
         }
 

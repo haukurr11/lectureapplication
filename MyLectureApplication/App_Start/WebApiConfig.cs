@@ -11,22 +11,33 @@ namespace MyLectureApplication
     {
         public static void Register(HttpConfiguration config)
         {
+            // Change to JSON
+            var json = config.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            config.Formatters.Remove(config.Formatters.XmlFormatter);
+            
 
             config.Routes.MapHttpRoute(
-                name: "DefaultApi",
-                routeTemplate: "api/v1/lectures/{LectureID}/{controller}/{commentID}",
-                defaults: new { id = RouteParameter.Optional,controller="CommentsController" }
-            );
+               name: "Lecture",
+               routeTemplate: "api/v1/{controller}/{id}",
+               defaults: new { id = RouteParameter.Optional }
+           );
             config.Routes.MapHttpRoute(
                name: "Lectures",
-               routeTemplate: "api/v1/{controller}/{LectureID}",
-               defaults: new { id = RouteParameter.Optional, controller = "LecturesController" }
+               routeTemplate: "api/v1/{controller}",
+               defaults: new { controller = "Lectures" }
            );
+           
             config.Routes.MapHttpRoute(
                name: "Comments",
-               routeTemplate: "api/v1/lectures/{LectureID}/{controller}",
-               defaults: new { id = RouteParameter.Optional, controller = "CommentsController" }
-           );
+               routeTemplate: "api/v1/{controller}/{id}",
+               defaults: new { id = RouteParameter.Optional}
+           );/*
+            config.Routes.MapHttpRoute(
+               name: "Comment",
+               routeTemplate: "api/v1/{controller}",
+               defaults: new { controller = "CommentsController" }
+           );*/
         }
     }
 }

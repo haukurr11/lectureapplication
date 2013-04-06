@@ -15,7 +15,12 @@ namespace MyLectureApplication.Controllers
         // GET api/lectures
         public IEnumerable<Lecture> Get()
         {
-            return db.Lectures;
+            var result = from lecture in db.Lectures
+                         select lecture;
+            if (result == null)
+                throw new FieldAccessException("Nothing found in db.Lectures");
+                          
+            return result;
         }
 
         // GET api/lectures/5
