@@ -35,8 +35,8 @@ namespace MyLectureApplication.Controllers
                                where user.UserName == User.Identity.Name
                                select user).FirstOrDefault().FullName;
 
-            var result = from lecture in db.Lectures
-                         select lecture;
+            var result = (from lecture in db.Lectures
+                         select lecture).ToList();
             foreach(Lecture lec in result) {
                 LectureListContainer llc = new LectureListContainer();
                 llc.ID = lec.ID;
