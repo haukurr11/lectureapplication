@@ -175,6 +175,8 @@
     <Compile Include="Models\AppDataContext.cs" />
     <Compile Include="Models\Comment.cs" />
     <Compile Include="Models\Lecture.cs" />
+    <Compile Include="Models\ViewModels\LectureListViewModel.cs" />
+    <Compile Include="Models\ViewModels\LectureViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

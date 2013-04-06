@@ -6,8 +6,12 @@
 
 
 
+<form method="get" action="/">
+<button class="btn btn-primary" type="submit">
+  &lt; Back
+</button>
 <div class="row">
-  <div class="span4 offset4 well" ng-controller="LoginController">
+  <div class="well" ng-controller="LoginController">
    
 @using (Html.BeginForm()) {
     @Html.AntiForgeryToken()

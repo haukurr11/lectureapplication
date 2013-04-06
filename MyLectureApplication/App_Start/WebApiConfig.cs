@@ -11,12 +11,6 @@ namespace MyLectureApplication
     {
         public static void Register(HttpConfiguration config)
         {
-            config.Formatters.JsonFormatter.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore; 
-            // Change to JSON
-            var json = config.Formatters.JsonFormatter;
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
-            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None; 
-            config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Routes.MapHttpRoute(
            name: "LoggedInUser",
            routeTemplate: "api/v1/{controller}",

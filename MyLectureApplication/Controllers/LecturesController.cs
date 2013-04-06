@@ -28,14 +28,26 @@ namespace MyLectureApplication.Controllers
 
         // GET api/lectures
         [Authorize]
-        public IEnumerable<Lecture> Get()
+        public LectureListViewModel Get()
         {
+            LectureListViewModel vm = new LectureListViewModel();
+            vm.UserFullName = (from user in db.UserProfiles
+                               where user.UserName == User.Identity.Name
+                               select user).FirstOrDefault().FullName;
+
             var result = from lecture in db.Lectures
                          select lecture;
+            foreach(Lecture lec in result) {
+                LectureListContainer llc = new LectureListContainer();
+                llc.ID = lec.ID;
+                llc.Name = lec.Name;
+                llc.TeacherName = lec.Teacher.FullName;
+                llc.PublishedDate = lec.DatePublished.ToUniversalTime().ToString() ;
+                vm.lectures.Add(llc);
+            }
             if (result == null)
                 throw new FieldAccessException("Nothing found in db.Lectures");
-                          
-            return result;
+            return vm;
         }
 
         // GET api/lectures/5
@@ -56,17 +68,19 @@ namespace MyLectureApplication.Controllers
         //[Authorize(Roles = "Teachers")]
         public void Post(Lecture lec)
         {
-            AppDataContext db = new AppDataContext();
+            if (lec.LectureURL.Length > 0 && lec.Name.Length > 0)
+            {
+                AppDataContext db = new AppDataContext();
 
-            var result = (from users in db.UserProfiles
-                          where users.UserName == User.Identity.Name
-                          select users).SingleOrDefault();
-            lec.Teacher = result;
-            //var lecture = new Lecture { LectureURL = lec.LectureURL, DatePublished = lec.DatePublished, Teacher = lec.Teacher, Name = lec.Name };
-            lec.DatePublished = DateTime.Now;
-            db.Lectures.Add(lec);
-            db.SaveChanges();
-                         
+                var result = (from users in db.UserProfiles
+                              where users.UserName == User.Identity.Name
+                              select users).SingleOrDefault();
+                lec.Teacher = result;
+                //var lecture = new Lecture { LectureURL = lec.LectureURL, DatePublished = lec.DatePublished, Teacher = lec.Teacher, Name = lec.Name };
+                lec.DatePublished = DateTime.Now;
+                db.Lectures.Add(lec);
+                db.SaveChanges();
+            }                         
         }
 
         // PUT api/lectures/5

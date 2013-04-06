@@ -1,5 +1,5 @@
 <h2>
-  Welcome {{username}}
+  Welcome {{UserFullName}}
 </h2>
 <form class="form-inline">
   <input type="text" ng-model="newLecture.Name" class="input-small" placeholder="Lecture name" required/>
@@ -30,10 +30,10 @@
         </a>
       </td>
         <td>
-          {{lecture.Teacher.FullName}}
+          {{lecture.TeacherName}}
       </td>
          <td>
-          {{ lecture.DatePublished}}
+          {{ lecture.PublishedDate}}
       </td>
       </tr>
   </tbody>

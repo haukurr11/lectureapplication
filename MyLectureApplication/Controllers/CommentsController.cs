@@ -15,22 +15,47 @@ namespace MyLectureApplication.Controllers
 
         // GET api/comments/5
         [Authorize]
-        public IEnumerable<Comment> Get(int id)
+        public LectureViewModel Get(int id)
         {
-            var result = from c in db.Comments
-                         where c.Lecture.ID == id 
-                         select c;
-                          
+            LectureViewModel vm = new LectureViewModel();
+            var lec = (from l in db.Lectures
+                       where l.ID == id
+                       select l).FirstOrDefault();
+            vm.Title = lec.Name;
+            vm.ID = id;
+            vm.VideoURL = lec.LectureURL;
+            var result = (from c in db.Comments
+                         where c.Lecture.ID == id
+                          select c).AsEnumerable().Reverse();
             if (result == null)
-                        throw new FieldAccessException("Nothing found in db.Comments");
-            return result;
+                throw new FieldAccessException("Nothing found in db.Comments");
+            foreach( Comment c in result) {
+                CommentContainer cc = new CommentContainer();
+                cc.AuthorName = c.Poster.FullName;
+                cc.PublishedDate = c.DatePublished.ToUniversalTime().ToString();
+                cc.CommentText = c.CommentText;
+                vm.comments.Add(cc);
+            }
+            return vm;
         }
 
         // POST api/comments
         [Authorize]
-        public void Post(int id,[FromBody]string value)
+        public void Post(int id,Comment com)
         {
-            Console.WriteLine("hallo");
+            if (com.CommentText.Length > 0)
+            {
+                com.DatePublished = DateTime.Now;
+                com.Poster = (from user in db.UserProfiles
+                              where user.UserName == User.Identity.Name
+                              select user).FirstOrDefault();
+                com.Lecture = (from lecture in db.Lectures
+                               where lecture.ID == id
+                               select lecture).SingleOrDefault();
+                com.ID = 0;
+                db.Comments.Add(com);
+                db.SaveChanges();
+            }
         }
 
         // PUT api/comments/5

@@ -1,18 +1,20 @@
 ﻿<button class="btn btn-primary" ng-click="backtolectures()" type="button"> &lt; Back to lectures</button>
 <h2>{{lecture.Name}}</h2>
-<iframe class="youtube-player" type="text/html" width="640" height="385" src="{{ lecture.LectureURL }}" allowfullscreen frameborder="0"></iframe>
 
     <div class="commentform">
+        <iframe class="youtube-player" type="text/html" width="640" height="385" src="{{ lecture.LectureURL }}" allowfullscreen frameborder="0"></iframe>
+
     <form method="POST" action="/api/v1/lectures/{{lecture.ID}}/comments" class="form-horizontal">  
-                    <textarea name="message" rows="3" class="span5" placeholder="Enter message here."></textarea>  
-                <button type="submit" class="btn btn-primary sendmsg">Send</button>  
+                    <textarea ng-model="newcomment.CommentText" name="message" rows="3" class="span5" placeholder="Enter message here."></textarea>  
+                <button ng-click="postcomment()" type="button" class="btn btn-primary sendmsg">Send</button>  
         </form>
-        </div>
+        
 <div class="comment" ng-repeat="comment in comments">
     <span> 
-    {{comment.Poster.UserName}}
-    <div>{{comment.DatePublished}} </div>
+    {{comment.AuthorName}}
+    <div>{{comment.PublishedDate}} </div>
     </span>
     <p>{{comment.CommentText}}</p>
 
 </div>
+        </div>
