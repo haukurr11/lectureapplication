@@ -53,9 +53,20 @@ namespace MyLectureApplication.Controllers
         }
 
         // POST api/lectures
-        [Authorize(Roles = "Teachers")]
-        public void Post([FromBody]string value)
+        //[Authorize(Roles = "Teachers")]
+        public void Post(Lecture lec)
         {
+            AppDataContext db = new AppDataContext();
+
+            var result = (from users in db.UserProfiles
+                          where users.UserName == User.Identity.Name
+                          select users).SingleOrDefault();
+            lec.Teacher = result;
+            //var lecture = new Lecture { LectureURL = lec.LectureURL, DatePublished = lec.DatePublished, Teacher = lec.Teacher, Name = lec.Name };
+            lec.DatePublished = DateTime.Now;
+            db.Lectures.Add(lec);
+            db.SaveChanges();
+                         
         }
 
         // PUT api/lectures/5
