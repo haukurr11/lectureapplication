@@ -17,7 +17,6 @@ namespace MyLectureApplication
            defaults: new { controller = "CurrentUser" }
              );
            
-
             config.Routes.MapHttpRoute(
                name: "Lecture",
                routeTemplate: "api/v1/{controller}/{id}",
