@@ -15,6 +15,7 @@ namespace MyLectureApplication
             // Change to JSON
             var json = config.Formatters.JsonFormatter;
             json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.Objects;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.None; 
             config.Formatters.Remove(config.Formatters.XmlFormatter);
             config.Routes.MapHttpRoute(
            name: "LoggedInUser",
