@@ -7,6 +7,9 @@ using System.Web.Mvc;
 using System.Web.Optimization;
 using System.Web.Routing;
 using Newtonsoft.Json;
+
+using WebMatrix.WebData;
+
 namespace MyLectureApplication
 {
     // Note: For instructions on enabling IIS6 or IIS7 classic mode, 
@@ -16,6 +19,7 @@ namespace MyLectureApplication
     {
         protected void Application_Start()
         {
+            WebSecurity.InitializeDatabaseConnection("DefaultConnection", "UserProfile", "UserId", "UserName", true);
             var jsonSerializerSettings = new JsonSerializerSettings
             {
                 PreserveReferencesHandling = PreserveReferencesHandling.Objects

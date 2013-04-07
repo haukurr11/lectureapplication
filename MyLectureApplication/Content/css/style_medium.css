@@ -1,0 +1,171 @@
+html {
+width:100%;
+padding:0px;
+margin:0px;
+}
+.container {
+    background-color:white;
+    width:100%;
+    min-width:100%;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display:block;
+}
+.hide_element {
+    display:none;
+}
+table {
+margin-top:10px;
+}
+table th {
+display:none;
+}
+table td {
+border-top: none !important;
+display:block;
+font-size:9px;
+height:9px;
+cursor:pointer;
+}
+table tr {
+    border-top: 1px solid #CCCCCC;
+}
+#lecturelink {
+font-size:30px;
+height:20px;
+}
+body {
+    
+padding:0px;
+margin:0px;
+    width:100%;
+    background-color:#EEEEEE;
+}
+#chat {
+    overflow-y:scroll;
+    height:400px;
+    float:left;
+    width:80%;
+}
+.msgcol {
+    word-break:break-all;
+
+}
+.input-append {
+    width:100%;
+}
+.span2 {
+    width:90% !important;
+}
+.btn {
+    width:100%;
+}
+#sendbtn {
+    width:10%;
+}
+.timecol{
+    width:5%;
+}
+.nickcol{
+    font-weight:bold;
+    width:6%;
+}
+.hidebutton {
+    display:none !important;
+}
+select.noncreator {
+    height:400px !important;
+}
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+    margin-bottom:10px;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+h2 {
+    font-size:20px;
+    text-align:center;
+}
+
+.form-inline {
+    width:90%;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important;
+    padding:0;
+    margin:0;
+}
+.form-inline button{
+    
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important;
+  display:block;
+  width:97%;
+      padding:0;
+      margin:0;
+}
+.form-inline input{
+    
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important;
+  display:block;
+  width:97%;
+      padding:0;
+      margin:0;
+}
+.sendmsg {
+    height:30px;
+    width:100%;
+}
+.commentform {
+    width:100%;
+    max-width:98%;
+    margin-top:10px;
+    text-align:center;
+     display: block !important; 
+     
+    margin-left:auto !important;
+    margin-right:auto !important;
+    display:block;
+}
+.span5 {
+width:100% !important;
+}
+.comment span{
+    background-color:#333333;
+    color:white;
+    width:100%;
+    height:100%;
+    display:inline-block;
+}
+.comment span div{
+    float:right;
+    font-size:9px;
+}
+.comment {
+    border-radius:5px;
+    width:100%;
+     display: block !important; 
+    background-color:#EEEEEE;
+   text-align:left;
+   overflow:hidden;
+   margin-bottom:5px;
+
+}   
+
+.comment p{
+
+}
+.well {
+    width: 100%;
+}

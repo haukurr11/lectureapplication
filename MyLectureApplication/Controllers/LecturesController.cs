@@ -4,8 +4,8 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
-using MyLectureApplication.Models;  
-
+using MyLectureApplication.Models;
+using WebMatrix.WebData;
 using System.Web.Security;
 namespace MyLectureApplication.Controllers
 {
@@ -22,8 +22,10 @@ namespace MyLectureApplication.Controllers
             return u;
         }
     }
+    [Authorize]
     public class LecturesController : ApiController
     {
+        
         AppDataContext db = new AppDataContext();
 
         // GET api/lectures
@@ -31,10 +33,10 @@ namespace MyLectureApplication.Controllers
         public LectureListViewModel Get()
         {
             LectureListViewModel vm = new LectureListViewModel();
+            vm.isTeacher = Roles.IsUserInRole(User.Identity.Name, "Teachers");
             vm.UserFullName = (from user in db.UserProfiles
                                where user.UserName == User.Identity.Name
                                select user).FirstOrDefault().FullName;
-
             var result = (from lecture in db.Lectures
                          select lecture).ToList();
             foreach(Lecture lec in result) {

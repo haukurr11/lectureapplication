@@ -1,0 +1,26 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Highscore:</h2>
+    <table class="table">
+        <thead>
+        <th>Username</th>
+        <th>Score</th>
+        <th>Meter</th>
+    </thead>
+    {% for score in highscore %}
+        <tr>
+        {% if score.0 == user.username %}
+            <td><b>{{ score.0 }}</b></td>
+        {% else %}
+            <td>{{ score.0 }}</td>
+        {% endif %}
+
+            <td>{{ score.1 }}</td>
+            <td><meter min="0" max="{{ questions }}" value="{{ score.1 }}"></meter></td>
+        </tr>
+    {% endfor %}
+    </table>
+
+{% endblock %}

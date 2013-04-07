@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<h2>Welcome {{ user.username }}</h2>
+<p>Answered questions: {{ answered }}/ {{ total }}</p>
+    <p>
+        <progress value="{{ answered }}" max="{{ total }}">
+        </progress>
+    </p>
+
+    <ul>
+        {% for exam in exams %}
+            <li><a href="/webExam/{{exam.id}}">{{ exam.name }}</a></li>
+        {%  endfor  %}
+    </ul>
+
+{% endblock %}

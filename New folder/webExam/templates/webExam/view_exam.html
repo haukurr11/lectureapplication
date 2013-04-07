@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1> {{ exam.name }} </h1>
+    <h2> Deadline: {{ exam.deadline }} </h2>
+    <ul>
+        <form name="input" action="" method="POST">
+            {% for question in questions %}
+                <br/>
+                <li>{{ question.question }}</li>
+                <li><input type="radio" name="{{question.id}}" value="A">{{ question.a }}</li>
+                <li><input type="radio" name="{{question.id}}" value="B">{{ question.b }}</li>
+                <li><input type="radio" name="{{question.id}}" value="C">{{ question.c }}</li>
+                <li><input type="radio" name="{{question.id}}" value="D">{{ question.d }}</li>
+                <br/>
+            {%  endfor  %}
+            <input type="submit" value="Skila">
+        </form>
+    </ul>
+
+{% endblock %}

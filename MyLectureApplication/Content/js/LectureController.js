@@ -4,7 +4,7 @@ app.controller("LectureController", function ($scope, $location, $http, $routePa
     $scope.newcomment = { CommentText: "" };
 
 
-function LoadViewModel() {
+function LoadVM() {
         $http.get('/api/v1/lectures/' + $routeParams.id + "/comments").success(function (data) {
             var vidvar = data.VideoURL.lastIndexOf("v=") + 2;
             var parameter = data.VideoURL.substring(vidvar, data.VideoURL.length);
@@ -13,11 +13,11 @@ function LoadViewModel() {
             $scope.comments = data.comments;
         });
     }
-    LoadViewModel();
+    LoadVM();
 
      $scope.postcomment = function () {
          $http.post('/api/v1/lectures/' + $scope.lecture.ID + '/comments', $scope.newcomment).success(function () {
-             LoadViewModel();
+             LoadVM();  
              $scope.newcomment.CommentText = "";
              $scope.apply();
          });

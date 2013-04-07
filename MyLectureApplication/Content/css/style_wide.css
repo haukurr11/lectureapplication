@@ -1,0 +1,143 @@
+.container {
+    margin-top: 2%;
+    background-color:white;
+    padding: 1%;
+    border-radius:5px;
+    max-width:800px;
+    width:95%;
+    margin-bottom:2%;
+}
+.hide_element {
+    display:none;
+}
+body {
+    background-color:#EEEEEE;
+}
+#chat {
+    overflow-y:scroll;
+    height:400px;
+    float:left;
+    width:80%;
+}
+.msgcol {
+    word-break:break-all;
+
+}
+#rightside {
+    float:right;
+    min-height:400px;
+    display:block;
+    width:18%;
+}
+#rightside select{
+    display:block;
+    height:350px;;
+    width:100%;
+}
+#rightside button{
+    display:block;
+    width:100%;
+}
+.input-append {
+    width:100%;
+}
+.span2 {
+    width:90% !important;
+}
+table tr {
+cursor:pointer;
+}
+#sendbtn {
+    width:10%;
+}
+.timecol{
+    width:5%;
+}
+.nickcol{
+    font-weight:bold;
+    width:6%;
+}
+.hidebutton {
+    display:none !important;
+}
+select.noncreator {
+    height:400px !important;
+}
+.videoWrapper {
+	position: relative;
+	padding-bottom: 56.25%; /* 16:9 */
+	padding-top: 25px;
+	height: 0;
+    margin-bottom:10px;
+}
+.videoWrapper iframe {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+}
+h2 {
+    text-align:center;
+}
+
+.form-inline {
+    width:60%;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important
+}
+.input-small {
+  width:20%;
+}
+.sendmsg {
+    height:70px;
+    
+}
+.commentform {
+    width:80%;
+    max-width:650px;
+    margin-top:10px;
+    text-align:center;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important
+}
+.span5 {
+width:50% !important;
+}
+.comment span{
+    background-color:#333333;
+    color:white;
+    width:100%;
+    height:100%;
+    display:inline-block;
+    padding-left:20px;
+}
+.comment span div{
+    float:right;
+    padding-right:40px;
+}
+.comment {
+    border-radius:5px;
+    width:100%;
+     display: block !important; 
+    margin-left:auto !important;
+    margin-right:auto !important;
+    background-color:#EEEEEE;
+   text-align:left;
+   overflow:hidden;
+   margin-bottom:5px;
+
+}   
+
+.comment p{
+    padding-left:10px;
+
+}
+.well {
+    width: 100%;
+    margin-left:auto !important;
+    margin-right:auto !important;
+    max-width:350px;
+}

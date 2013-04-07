@@ -2,7 +2,10 @@
 <h2>{{lecture.Name}}</h2>
 
     <div class="commentform">
+        <div class="videoWrapper">
+    <!-- Copy & Pasted from YouTube -->
         <iframe class="youtube-player" type="text/html" width="640" height="385" src="{{ lecture.LectureURL }}" allowfullscreen frameborder="0"></iframe>
+</div>
 
     <form method="POST" action="/api/v1/lectures/{{lecture.ID}}/comments" class="form-horizontal">  
                     <textarea ng-model="newcomment.CommentText" name="message" rows="3" class="span5" placeholder="Enter message here."></textarea>  

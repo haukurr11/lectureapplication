@@ -24,6 +24,7 @@ namespace MyLectureApplication.Models
         #region Properties
         public string UserFullName { get; set; }
         public List<LectureListContainer> lectures { get; set; }
+        public Boolean isTeacher { get; set; }
         #endregion
     }
 }

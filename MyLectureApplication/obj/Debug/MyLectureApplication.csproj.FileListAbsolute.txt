@@ -95,3 +95,5 @@ C:\stuff\Forritun\lectureApp\lectureapplication\MyLectureApplication\bin\DotNetO
 C:\stuff\Forritun\lectureApp\lectureapplication\MyLectureApplication\bin\DotNetOpenAuth.OpenId.RelyingParty.xml
 C:\stuff\Forritun\lectureApp\lectureapplication\MyLectureApplication\obj\Debug\MyLectureApplication.dll
 C:\stuff\Forritun\lectureApp\lectureapplication\MyLectureApplication\obj\Debug\MyLectureApplication.pdb
+C:\Users\haukur\Documents\Visual Studio 2012\Projects\MyLectureApplication\MyLectureApplication\bin\System.Web.Abstractions.dll
+C:\Users\haukur\Documents\Visual Studio 2012\Projects\MyLectureApplication\MyLectureApplication\bin\System.Web.Routing.dll

@@ -1,10 +1,10 @@
 <h2>
   Welcome {{UserFullName}}
 </h2>
-<form class="form-inline">
-  <input type="text" ng-model="newLecture.Name" class="input-small" placeholder="Lecture name" required/>
-  <input type="text" ng-model="newLecture.LectureURL" class="input-small" placeholder="URL" required/>
-  <button ng-click="addLecture()" class="btn">
+<form class="form-inline" ng-show="isTeacher">
+  <input ng-show="isTeacher" type="text" ng-model="newLecture.Name" class="input-small" placeholder="Lecture name" required/>
+  <input ng-show="isTeacher" type="text" ng-model="newLecture.LectureURL" class="input-small" placeholder="YouTube URL" required/>
+  <button ng-show="isTeacher" ng-click="addLecture()" class="btn btn-primary">
     Create lecture
   </button>
 </form>
@@ -23,16 +23,16 @@
       </tr>
   </thead>
   <tbody>
-    <tr ng-repeat="lecture in lectures">
-      <td>
-        <a href="" ng-click="viewlecture(lecture.ID)">
+    <tr ng-repeat="lecture in lectures" ng-click="viewlecture(lecture.ID)">
+      <td id="lecturelink" ng-click="viewlecture(lecture.ID)">
+        <a href="" >
           {{lecture.Name}}
         </a>
       </td>
         <td>
           {{lecture.TeacherName}}
       </td>
-         <td>
+         <td id="date">
           {{ lecture.PublishedDate}}
       </td>
       </tr>
